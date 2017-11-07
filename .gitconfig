@@ -1,0 +1,5 @@
+[user]
+	name = Robert Anderson
+	email = robert@noisysocks.com
+[push]
+	default = current
