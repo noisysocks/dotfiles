@@ -1,6 +1,10 @@
 # Configure $PATH
 export PATH="/usr/local/sbin:$PATH"
 
+# Increase how big .bash_history can grow
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
 # Show git status in my prompt
 GIT_PS1_SHOWDIRTYSTATE=true
 export PS1='\[$(tput setaf 7)\]\W$(__git_ps1)$ \[$(tput sgr0)\]'
