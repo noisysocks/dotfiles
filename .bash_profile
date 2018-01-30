@@ -1,5 +1,5 @@
 # Configure $PATH
-export PATH="/usr/local/sbin:$PATH"
+export PATH="~/bin:/usr/local/sbin:$PATH"
 
 # Increase how big .bash_history can grow
 export HISTSIZE=100000
