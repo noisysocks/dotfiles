@@ -3,3 +3,5 @@
 	email = robert@noisysocks.com
 [push]
 	default = current
+[alias]
+	co = checkout
