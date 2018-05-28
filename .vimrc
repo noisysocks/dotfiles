@@ -8,6 +8,8 @@ filetype plugin on
 syntax on
 
 " Use the badass Dracula theme
+let g:dracula_colorterm = 0
+let g:dracula_italic = 0
 colorscheme dracula
 
 " Let me click on things as if it's my first day using vim
