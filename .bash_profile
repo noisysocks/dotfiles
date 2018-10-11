@@ -18,5 +18,10 @@ export GPG_TTY=$(tty)
 # Enable z
 [ -f /usr/local/etc/profile.d/z.sh ] && . /usr/local/etc/profile.d/z.sh
 
+# Enable nvm
+export NVM_DIR=~/.nvm
+[ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh
+[ -f "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+
 # Load in a seperate config file for sensitive information
 [ -f ~/.private_bash_profile ] && . ~/.private_bash_profile
