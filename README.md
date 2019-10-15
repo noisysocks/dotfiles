@@ -1,7 +1,7 @@
 # dotfiles
 
-My various bash & vim config files. Storing them online makes it slightly
-easier to move computer.
+My various config files. Storing them online makes it slightly easier to move
+computer.
 
 ❤️
 
@@ -12,7 +12,7 @@ git clone https://github.com/noisysocks/dotfiles.git
 cd dotfiles
 git submodule init
 git submodule update
-ln -s "$PWD/.bash_profile" ~/.bash_profile
+ln -s "$PWD/.zshrc" ~/.zshrc
 ln -s "$PWD/.vimrc" ~/.vimrc
 ln -s "$PWD/.vim" ~/.vim
 ln -s "$PWD/.gitconfig" ~/.gitconfig
