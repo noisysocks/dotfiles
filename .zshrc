@@ -1,19 +1,25 @@
-# Configure path
+# Configure PATH to include ~/bin and any paths needed by Homebrew.
 export PATH="~/bin:/usr/local/sbin:$PATH"
 
-# Enable zsh completions
+# Enable zsh completion.
 autoload -Uz compinit && compinit
 
-# Configure prompt
+# Set zsh's prompt to show the current directory and the current git branch.
 [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ] && . /usr/local/etc/bash_completion.d/git-prompt.sh
 setopt PROMPT_SUBST
 GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='%F{244}%1~$(__git_ps1) %#%f '
 
-# Enable z
+# Load z.
 [ -f /usr/local/etc/profile.d/z.sh ] && . /usr/local/etc/profile.d/z.sh
 
-# Enable nvm
+# Load nvm.
 export NVM_DIR=~/.nvm
 [ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh
 [ -f /usr/local/opt/nvm/etc/bash_completion ] && . /usr/local/opt/nvm/etc/bash_completion
+
+# Configure fzf to, by default, only look at the files that rg indexes.
+export FZF_DEFAULT_COMMAND='rg --files'
+
+# Set the default editor to nvim.
+export EDITOR=nvim
