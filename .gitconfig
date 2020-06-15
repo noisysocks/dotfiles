@@ -6,3 +6,5 @@
 	default = current
 [alias]
 	co = checkout
+[pull]
+	ff = only
