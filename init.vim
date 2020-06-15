@@ -14,22 +14,30 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
+" Eagerly load most plugins.
 Plug 'chriskempson/base16-vim'
-Plug 'dense-analysis/ale', { 'for': ['javascript', 'php'] }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'noisysocks/vim-airline'
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline-themes'
 
+" We only need ALE when working with javascript and php files.
+Plug 'dense-analysis/ale', { 'for': ['javascript', 'php'] }
+
+" NERDTree and vim-unimpaired both take > 5 ms to load, so wait for VimEnter.
+Plug 'preservim/nerdtree', { 'on': [] }
+Plug 'tpope/vim-unimpaired', { 'on': [] }
+
 call plug#end()
+
+" Load NERDTree and vim-unimpaired after startup.
+autocmd VimEnter * call plug#load('nerdtree', 'vim-unimpaired')
 
 " Use the Tomorow Night theme. Fail silently if the base16-vim plugin hasn't
 " been installed yet.
