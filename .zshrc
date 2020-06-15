@@ -21,5 +21,6 @@ export NVM_DIR=~/.nvm
 # Configure fzf to, by default, only look at the files that rg indexes.
 export FZF_DEFAULT_COMMAND='rg --files'
 
-# Set the default editor to nvim.
+# Use nvim as my editor.
 export EDITOR=nvim
+alias vim=nvim
