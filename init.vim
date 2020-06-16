@@ -30,37 +30,39 @@ Plug 'vim-airline/vim-airline-themes'
 " We only need ALE when working with javascript and php files.
 Plug 'dense-analysis/ale', { 'for': ['javascript', 'php'] }
 
-" NERDTree and vim-unimpaired both take > 5 ms to load, so wait for VimEnter.
+" NERDTree and vim-unimpaired each take > 5 ms to load, so defer them.
 Plug 'preservim/nerdtree', { 'on': [] }
 Plug 'tpope/vim-unimpaired', { 'on': [] }
 
 call plug#end()
 
-" Load NERDTree and vim-unimpaired after startup.
+" Load NERDTree and vim-unimpaired after vim finishes starting.
 autocmd VimEnter * call plug#load('nerdtree', 'vim-unimpaired')
 
 " Use the Tomorow Night theme. Fail silently if the base16-vim plugin hasn't
 " been installed yet.
 silent! colorscheme base16-tomorrow-night
 
-" Highlight where text will wrap.
-set colorcolumn=+1
-
-" Highlight the current line.
-set cursorline
-
 " vim-airline already shows the current mode, so there's no need to show it
 " again at the bottom of the editor.
 set noshowmode
 
-" Don't wrap long lines.
-set nowrap
-
-" Make tabs display a little smaller.
-set tabstop=4
-
 " Let me use the mouse like a baby.
 set mouse=a
+
+" Set indentation settings. These are the defaults that vim-sleuth will
+" usually override.
+set noexpandtab
+set shiftwidth=4
+set tabstop=4
+
+" Set a text width, highlight that column, but don't wrap long lines.
+set colorcolumn=+1
+set nowrap
+set textwidth=80
+
+" Highlight the current line.
+set cursorline
 
 " Ignore case when searching, unless the search query has capitals in it.
 set smartcase ignorecase
