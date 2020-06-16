@@ -1,5 +1,5 @@
 # Configure PATH to include ~/bin and any paths needed by Homebrew.
-export PATH="~/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/bin:/usr/local/sbin:$PATH"
 
 # Enable zsh completion.
 autoload -Uz compinit && compinit
