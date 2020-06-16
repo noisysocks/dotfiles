@@ -78,7 +78,11 @@ set completefunc=ale#completion#OmniFunc
 " Make CTRL-L clear any highlighted search terms.
 nmap <silent> <C-L> :nohlsearch<CR>
 
-" Map a few useful commands to leader key (\) shortcuts.
+" Map a few useful commands for querying the LSP.
+nmap <silent> <M-]> :ALEGoToDefinition<CR>
+nmap <silent> <C-H> :ALEHover<CR>
+
+" Map a few useful commands for moving around the project.
 nmap <silent> <Leader>b :Buffers<CR>
 nmap <silent> <Leader>f :Files<CR>
 nmap <silent> <Leader>h :History<CR>
