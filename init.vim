@@ -112,3 +112,6 @@ let g:gutentags_file_list_command = 'rg --files'
 " Make Gutentags store the tags file away from the project directory. This
 " keeps it from showing up in git.
 let g:gutentags_cache_dir = stdpath('cache') . '/tags'
+
+" Tells Gutentags to start doing its thing straight after opening vim.
+let g:gutentags_generate_on_empty_buffer = 1
