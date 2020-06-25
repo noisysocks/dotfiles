@@ -56,13 +56,19 @@ set noexpandtab
 set shiftwidth=4
 set tabstop=4
 
-" Set a text width, highlight that column, but don't wrap long lines.
-set colorcolumn=+1
+" Set a text width, but don't wrap long lines.
 set nowrap
 set textwidth=80
 
 " Highlight the current line.
 set cursorline
+
+" Show a line next to the 80th and 100th columns.
+set colorcolumn=+1,+21
+
+" Always show a line and column before and after the cursor.
+" set scrolloff=1
+" set sidescrolloff=1
 
 " Ignore case when searching, unless the search query has capitals in it.
 set smartcase ignorecase
