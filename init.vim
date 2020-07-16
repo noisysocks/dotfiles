@@ -98,7 +98,7 @@ nmap <silent> <C-H> :ALEHover<CR>
 nmap <silent> <Leader>b :Buffers<CR>
 nmap <silent> <Leader>f :Files<CR>
 nmap <silent> <Leader>h :History<CR>
-nmap <silent> <Leader>n :NERDTreeToggle<CR>
+nmap <silent> <Leader>n :NERDTreeFind<CR>
 nmap <silent> <Leader>o :BTags<CR>
 nmap <silent> <Leader>t :Tags<CR>
 
