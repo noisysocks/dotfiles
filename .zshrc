@@ -18,9 +18,15 @@ export NVM_DIR=~/.nvm
 [ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh
 [ -f /usr/local/opt/nvm/etc/bash_completion ] && . /usr/local/opt/nvm/etc/bash_completion
 
+# Enable fzf tab completion and key bindings.
+[ -f /usr/local/opt/fzf/shell/completion.zsh ] && [[ $- == *i* ]] && . /usr/local/opt/fzf/shell/completion.zsh
+[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ] && . /usr/local/opt/fzf/shell/key-bindings.zsh
+
 # Configure fzf to, by default, only look at the files that rg indexes.
 export FZF_DEFAULT_COMMAND='rg --files'
 
 # Use nvim as my editor.
 export EDITOR=nvim
+
+# Use nvim when I accidentally type vim.
 alias vim=nvim
