@@ -81,6 +81,12 @@ set hidden
 " autocompletion when we want it by pressing CTRL-X CTRL-U.
 set completefunc=ale#completion#OmniFunc
 
+" Exclude useless files from wildcard matches.
+set wildignore+=.git/*,node_modules/*,*/build/*,*/build-module/*
+
+" Use rg instead of grep.
+set grepprg=rg\ --vimgrep
+
 " Make CTRL-L clear any highlighted search terms.
 nmap <silent> <C-L> :nohlsearch<CR>
 
