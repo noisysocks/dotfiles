@@ -15,11 +15,11 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 " Eagerly load most plugins.
-Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'sheerun/vim-polyglot'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
@@ -39,9 +39,9 @@ call plug#end()
 " Load NERDTree and vim-unimpaired after vim finishes starting.
 autocmd VimEnter * call plug#load('nerdtree', 'vim-unimpaired')
 
-" Use the Tomorow Night theme. Fail silently if the base16-vim plugin hasn't
-" been installed yet.
-silent! colorscheme base16-tomorrow-night
+" Use the One Half theme and true colors.
+colorscheme onehalfdark " or onehalflight
+set termguicolors
 
 " vim-airline already shows the current mode, so there's no need to show it
 " again at the bottom of the editor.
