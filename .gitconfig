@@ -6,5 +6,6 @@
 	default = current
 [alias]
 	co = checkout
+	st = status
 [pull]
 	ff = only
