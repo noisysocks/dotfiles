@@ -107,10 +107,14 @@ nmap <silent> <Leader>t :Tags<CR>
 " Make ALE automatically fix errors when the buffer is saved.
 let g:ale_fix_on_save = 1
 
-" Tell ALE which linters to use on which filetypes.
+" Tell ALE which fixers to use on which filetypes. We use our own lambda
+" function instead of the built-in phpcbf fixer so as to not pass the
+" --stdin-path argument which messes up older phpcbf versions.
 let g:ale_fixers = {
 \	'javascript': ['eslint'],
-\	'php': ['phpcbf'],
+\	'php': [
+\		{buffer -> { 'command': ale#Escape(ale#fixers#phpcbf#GetExecutable(buffer)) . ' -' }}
+\	],
 \}
 
 " Make Gutentags only build tags from the files that rg indexes. This makes
