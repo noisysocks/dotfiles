@@ -90,15 +90,17 @@ set grepprg=rg\ --vimgrep
 " Make CTRL-L clear any highlighted search terms.
 nmap <silent> <C-L> :nohlsearch<CR>
 
-" Map a few useful commands for querying the LSP.
+" Map a few useful shortcuts for querying what's underneath the cursor.
 nmap <silent> <M-]> :ALEGoToDefinition<CR>
 nmap <silent> <C-H> :ALEHover<CR>
+nmap <silent> <C-S> :grep '\b<cword>\b'<CR>
 
 " Map a few useful commands for moving around the project.
 nmap <silent> <Leader>b :Buffers<CR>
 nmap <silent> <Leader>f :Files<CR>
 nmap <silent> <Leader>h :History<CR>
 nmap <silent> <Leader>n :NERDTreeFind<CR>
+nmap <silent> <Leader>N :NERDTree<CR>
 nmap <silent> <Leader>o :BTags<CR>
 nmap <silent> <Leader>t :Tags<CR>
 
