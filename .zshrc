@@ -61,9 +61,15 @@ fi
 # Use nvim as my editor.
 export EDITOR=nvim
 
-# Increase zsh history.
-export HISTSIZE=10000
-export SAVEHIST=10000
+# Make zsh save to .zsh_history immediately.
+setopt INC_APPEND_HISTORY
+
+# Remove duplicate commands from .zsh_history.
+setopt HIST_IGNORE_ALL_DUPS
+
+# Increase maximum size of .zsh_history.
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 
 # Use nvim when I accidentally type vim.
 alias vim=nvim
