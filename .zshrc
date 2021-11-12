@@ -1,36 +1,72 @@
-# Configure PATH to include ~/bin and any paths needed by Homebrew.
-export PATH="$HOME/bin:/usr/local/sbin:$PATH"
+if [ -x /opt/homebrew/bin ]; then
 
-# Enable zsh completion.
-autoload -Uz compinit && compinit
+	# Load Homebrew.
+	eval $(/opt/homebrew/bin/brew shellenv)
 
-# Set zsh's prompt to show the current directory and the current git branch.
-[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ] && . /usr/local/etc/bash_completion.d/git-prompt.sh
-setopt PROMPT_SUBST
-GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='%F{244}%1~$(__git_ps1) %#%f '
+	# Enable completions.
+	FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
+	autoload -Uz compinit
+	compinit
 
-# Load z.
-[ -f /usr/local/etc/profile.d/z.sh ] && . /usr/local/etc/profile.d/z.sh
+	# Set prompt to show current directory and git branch.
+	# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+	if [ -r $(brew --prefix)/etc/bash_completion.d/git-prompt.sh ]; then
+		source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+		GIT_PS1_SHOWDIRTYSTATE=1
+		precmd() {
+			__git_ps1 "%F{244}%1~" " %#%f "
+		}
+	else
+		echo '.zshrc: Could not load git prompt.'
+	fi
 
-# Load nvm.
-export NVM_DIR=~/.nvm
-[ -f /usr/local/opt/nvm/nvm.sh ] && . /usr/local/opt/nvm/nvm.sh
-[ -f /usr/local/opt/nvm/etc/bash_completion ] && . /usr/local/opt/nvm/etc/bash_completion
+	# Load z.
+	if [ -r $(brew --prefix)/etc/profile.d/z.sh ]; then
+		source $(brew --prefix)/etc/profile.d/z.sh
+	else
+		echo '.zshrc: Could not load z.'
+	fi
 
-# Enable fzf tab completion and key bindings.
-[ -f /usr/local/opt/fzf/shell/completion.zsh ] && [[ $- == *i* ]] && . /usr/local/opt/fzf/shell/completion.zsh
-[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ] && . /usr/local/opt/fzf/shell/key-bindings.zsh
+	# Load nvm.
+	if [ -r $(brew --prefix)/opt/nvm/nvm.sh ]; then
+		source $(brew --prefix)/opt/nvm/nvm.sh
+		export NVM_DIR=~/.nvm
+	else
+		echo '.zshrc: Could not load nvm.'
+	fi
+	if [ -r $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm ]; then
+		source $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm
+	else
+		echo '.zshrc: Could not load nvm completions.'
+	fi
 
-# Configure fzf to, by default, only look at the files that rg indexes.
-export FZF_DEFAULT_COMMAND='rg --files'
+	# Enable fzf tab completion and key bindings.
+	if [ -f $(brew --prefix)/opt/fzf/shell/completion.zsh ] && [[ $- == *i* ]]; then
+		source $(brew --prefix)/opt/fzf/shell/completion.zsh
+	else
+		echo '.zshrc: Could not load fzf completions.'
+	fi
+	if [ -f $(brew --prefix)/opt/fzf/shell/key-bindings.zsh ]; then
+		source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+	else
+		echo '.zshrc: Could not load fzf key bindings.'
+	fi
+
+else
+
+	echo '.zshrc: Could not execute brew.'
+
+fi
 
 # Use nvim as my editor.
 export EDITOR=nvim
 
-# Use nvim when I accidentally type vim.
-alias vim=nvim
-
 # Increase zsh history.
 export HISTSIZE=10000
 export SAVEHIST=10000
+
+# Use nvim when I accidentally type vim.
+alias vim=nvim
+
+# Configure fzf to, by default, only look at the files that rg indexes.
+export FZF_DEFAULT_COMMAND='rg --files'
