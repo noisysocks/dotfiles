@@ -30,3 +30,7 @@ export EDITOR=nvim
 
 # Use nvim when I accidentally type vim.
 alias vim=nvim
+
+# Increase zsh history.
+export HISTSIZE=10000
+export SAVEHIST=10000
