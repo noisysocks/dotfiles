@@ -52,6 +52,15 @@ if [ -x /opt/homebrew/bin ]; then
 		echo '.zshrc: Could not load nvm completions.'
 	fi
 
+	# Tell Puppeteer to use the system Chromium. The binary that Puppeteer tries
+	# to download doesn't work on ARM.
+	if [ -x $(brew --prefix)/bin/chromium ]; then
+		export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+		export PUPPETEER_EXECUTABLE_PATH="$(brew --prefix)/bin/chromium"
+	else
+		echo '.zshrc: Could not find chromium.'
+	fi
+
 else
 
 	echo '.zshrc: Could not execute brew.'
