@@ -27,19 +27,6 @@ if [ -x /opt/homebrew/bin ]; then
 		echo '.zshrc: Could not load z.'
 	fi
 
-	# Load nvm.
-	if [ -r $(brew --prefix)/opt/nvm/nvm.sh ]; then
-		source $(brew --prefix)/opt/nvm/nvm.sh
-		export NVM_DIR=~/.nvm
-	else
-		echo '.zshrc: Could not load nvm.'
-	fi
-	if [ -r $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm ]; then
-		source $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm
-	else
-		echo '.zshrc: Could not load nvm completions.'
-	fi
-
 	# Enable fzf tab completion and key bindings.
 	if [ -f $(brew --prefix)/opt/fzf/shell/completion.zsh ] && [[ $- == *i* ]]; then
 		source $(brew --prefix)/opt/fzf/shell/completion.zsh
@@ -50,6 +37,19 @@ if [ -x /opt/homebrew/bin ]; then
 		source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 	else
 		echo '.zshrc: Could not load fzf key bindings.'
+	fi
+
+	# Load nvm.
+	if [ -r $(brew --prefix)/opt/nvm/nvm.sh ]; then
+		export NVM_DIR=~/.nvm
+		source $(brew --prefix)/opt/nvm/nvm.sh
+	else
+		echo '.zshrc: Could not load nvm.'
+	fi
+	if [ -r $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm ]; then
+		source $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm
+	else
+		echo '.zshrc: Could not load nvm completions.'
 	fi
 
 else
