@@ -27,8 +27,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" We only need ALE when working with javascript and php files.
-Plug 'dense-analysis/ale', { 'for': ['javascript', 'php'] }
+" We only need ALE when working with javascript(ish) and php files.
+Plug 'dense-analysis/ale', { 'for': [ 'javascript', 'typescript', 'typescriptreact', 'php' ] }
 
 " NERDTree and vim-unimpaired each take > 5 ms to load, so defer them.
 Plug 'preservim/nerdtree', { 'on': [] }
@@ -112,6 +112,8 @@ let g:ale_fix_on_save = 1
 " --stdin-path argument which messes up older phpcbf versions.
 let g:ale_fixers = {
 \	'javascript': ['eslint'],
+\	'typescript': ['eslint'],
+\	'typescriptreact': ['eslint'],
 \	'php': [
 \		{buffer -> { 'command': ale#Escape(ale#fixers#phpcbf#GetExecutable(buffer)) . ' -' }}
 \	],
