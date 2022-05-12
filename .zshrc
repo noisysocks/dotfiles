@@ -1,3 +1,6 @@
+# Add ~/bin to my path.
+export PATH="$HOME/bin:$PATH"
+
 if [ -x /opt/homebrew/bin ]; then
 
 	# Load Homebrew.
