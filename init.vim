@@ -67,8 +67,8 @@ set cursorline
 set colorcolumn=+1,+21
 
 " Always show a line and column before and after the cursor.
- set scrolloff=1
- set sidescrolloff=1
+set scrolloff=1
+set sidescrolloff=1
 
 " Ignore case when searching, unless the search query has capitals in it.
 set smartcase ignorecase
