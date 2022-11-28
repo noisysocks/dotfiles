@@ -135,3 +135,6 @@ let g:gutentags_cache_dir = stdpath('cache') . '/tags'
 
 " Tells Gutentags to start doing its thing straight after opening vim.
 let g:gutentags_generate_on_empty_buffer = 1
+
+" Make Gutentags tell ctags that .tsx is a TypeScript file.
+let g:gutentags_ctags_extra_args = ['--map-TypeScript=+.tsx']
