@@ -1,7 +1,7 @@
 [user]
 	name = Robert Anderson
 	email = robert@noisysocks.com
-	signingkey = 61D7E6719F3C32F3
+	signingkey = 089EAF0B29B07C09
 [push]
 	default = current
 [alias]
@@ -9,3 +9,5 @@
 	st = status
 [pull]
 	ff = only
+[commit]
+	gpgsign = true
