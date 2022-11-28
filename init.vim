@@ -77,9 +77,9 @@ set smartcase ignorecase
 " makes it quick to navigate around using [b / ]b or :bprev / :bnext.
 set hidden
 
-" Use ALE for our user completion function. This gives us IntelliSense-like
-" autocompletion when we want it by pressing CTRL-X CTRL-U.
-set completefunc=ale#completion#OmniFunc
+" Use ALE for our omnicompletion function. This gives us IntelliSense-like
+" autocompletion when we want it by pressing CTRL-X CTRL-O.
+set omnifunc=ale#completion#OmniFunc
 
 " Exclude useless files from wildcard matches.
 set wildignore+=.git/*,node_modules/*,*/build/*,*/build-module/*
@@ -90,19 +90,25 @@ set grepprg=rg\ --vimgrep
 " Make CTRL-L clear any highlighted search terms.
 nmap <silent> <C-L> :nohlsearch<CR>
 
-" Map a few useful shortcuts for querying what's underneath the cursor.
+" Use option key for querying what's under the cursor.
+nmap <silent> <M-g> :grep '\b<cword>\b'<CR>
 nmap <silent> <M-]> :ALEGoToDefinition<CR>
-nmap <silent> <C-H> :ALEHover<CR>
-nmap <silent> <C-S> :grep '\b<cword>\b'<CR>
+nmap <silent> <M-t> :ALEGoToTypeDefinition<CR>
+nmap <silent> <M-f> :ALEFindReferences<CR>
+nmap <silent> <M-h> :ALEHover<CR>
+nmap <silent> <M-d> :ALEDetail<CR>
+nmap <silent> <M-r> :ALERename<CR>
+nmap <silent> <M-i> :ALEImport<CR>
 
-" Map a few useful commands for moving around the project.
+" Use leader key for moving around the project.
+nmap <silent> <Leader>n :NERDTreeFind<CR>
+nmap <silent> <Leader>N :NERDTree<CR>
 nmap <silent> <Leader>b :Buffers<CR>
 nmap <silent> <Leader>f :Files<CR>
 nmap <silent> <Leader>h :History<CR>
-nmap <silent> <Leader>n :NERDTreeFind<CR>
-nmap <silent> <Leader>N :NERDTree<CR>
 nmap <silent> <Leader>o :BTags<CR>
 nmap <silent> <Leader>t :Tags<CR>
+nmap <silent> <Leader>g :Rg<CR>
 
 " Make ALE automatically fix errors when the buffer is saved.
 let g:ale_fix_on_save = 1
