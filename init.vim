@@ -15,6 +15,7 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 " Eagerly load most plugins.
+Plug 'github/copilot.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
@@ -147,3 +148,8 @@ let g:gutentags_generate_on_empty_buffer = 1
 
 " Make Gutentags tell ctags that .tsx is a TypeScript file.
 let g:gutentags_ctags_extra_args = ['--map-TypeScript=+.tsx']
+
+" Make Copilot use system version of node.
+if executable('/opt/homebrew/bin/node')
+	let g:copilot_node_command = '/opt/homebrew/bin/node'
+endif
