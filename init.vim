@@ -22,6 +22,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
@@ -30,13 +32,14 @@ Plug 'vim-airline/vim-airline-themes'
 " We only need ALE when working with javascript(ish) and php files.
 Plug 'dense-analysis/ale', { 'for': [ 'javascript', 'typescript', 'typescriptreact', 'php' ] }
 
-" NERDTree and vim-unimpaired each take > 5 ms to load, so defer them.
+" Defer plugins that take a few ms to load.
+" https://www.liooo.dev/en/post/2020-04-05-faster-vim-start-up-time-by-lazy-loading-plugins/
 Plug 'preservim/nerdtree', { 'on': [] }
 Plug 'tpope/vim-unimpaired', { 'on': [] }
 
 call plug#end()
 
-" Load NERDTree and vim-unimpaired after vim finishes starting.
+" Load deferred plugins after vim has finished starting.
 autocmd VimEnter * call plug#load('nerdtree', 'vim-unimpaired')
 
 " Use the One Half theme and true colors.
