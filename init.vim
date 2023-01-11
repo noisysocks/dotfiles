@@ -113,6 +113,12 @@ nmap <silent> <Leader>o :BTags<CR>
 nmap <silent> <Leader>t :Tags<CR>
 nmap <silent> <Leader>g :Rg<CR>
 
+" Make vim-airline use ASCII characters. (The unicode stuff is weird.)
+let g:airline_symbols_ascii = 1
+
+" Truncate long git branch names in vim-airline.
+let g:airline#extensions#branch#displayed_head_limit = 20
+
 " Make ALE automatically fix errors when the buffer is saved.
 let g:ale_fix_on_save = 1
 
