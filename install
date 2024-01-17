@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ ! -L ~/.zshrc ]; then
+	ln -s "$SCRIPT_DIR/.zshrc" ~/.zshrc
+else
+	echo "~/.zshrc already exists"
+fi
+
+if [ ! -L ~/.gitconfig ]; then
+	ln -s "$SCRIPT_DIR/.gitconfig" ~/.gitconfig
+else
+	echo "~/.gitconfig already exists"
+fi
+
+mkdir -p ~/.config/nvim
+
+if [ ! -L ~/.config/nvim/init.lua ]; then
+	ln -s "$SCRIPT_DIR/.config/nvim/init.lua" ~/.config/nvim/init.lua
+else
+	echo "~/.config/nvim/init.lua already exists"
+fi
