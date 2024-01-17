@@ -12,5 +12,5 @@ git clone https://github.com/noisysocks/dotfiles.git
 cd dotfiles
 ln -s "$PWD/.zshrc" ~/.zshrc
 ln -s "$PWD/.gitconfig" ~/.gitconfig
-mkdir -p ~/.config/nvim && ln -s "$PWD/init.vim" ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim && ln -s "$PWD/.config/nvim/init.lua" ~/.config/nvim/init.lua
 ```
