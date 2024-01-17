@@ -1,17 +1,17 @@
-# Add ~/bin to my path.
+# Add ~/bin to my path
 export PATH="$HOME/bin:$PATH"
 
 if [ -x /opt/homebrew/bin ]; then
 
-	# Load Homebrew.
+	# Load Homebrew
 	eval $(/opt/homebrew/bin/brew shellenv)
 
-	# Enable completions.
+	# Enable completions
 	FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
 	autoload -Uz compinit
 	compinit
 
-	# Set prompt to show current directory and git branch.
+	# Set prompt to show current directory and git branch
 	# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 	if [ -r $(brew --prefix)/etc/bash_completion.d/git-prompt.sh ]; then
 		source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
@@ -23,14 +23,14 @@ if [ -x /opt/homebrew/bin ]; then
 		echo '.zshrc: Could not load git prompt.'
 	fi
 
-	# Load z.
+	# Load z
 	if [ -r $(brew --prefix)/etc/profile.d/z.sh ]; then
 		source $(brew --prefix)/etc/profile.d/z.sh
 	else
 		echo '.zshrc: Could not load z.'
 	fi
 
-	# Enable fzf tab completion and key bindings.
+	# Enable fzf tab completion and key bindings
 	if [ -f $(brew --prefix)/opt/fzf/shell/completion.zsh ] && [[ $- == *i* ]]; then
 		source $(brew --prefix)/opt/fzf/shell/completion.zsh
 	else
@@ -42,7 +42,7 @@ if [ -x /opt/homebrew/bin ]; then
 		echo '.zshrc: Could not load fzf key bindings.'
 	fi
 
-	# Load nvm.
+	# Load nvm
 	if [ -r $(brew --prefix)/opt/nvm/nvm.sh ]; then
 		export NVM_DIR=~/.nvm
 		source $(brew --prefix)/opt/nvm/nvm.sh
@@ -61,24 +61,22 @@ else
 
 fi
 
-# Use nvim as my editor.
+# Use nvim as my editor
 export EDITOR=nvim
+alias vim=nvim
 
-# Make zsh save to .zsh_history immediately.
+# Make zsh save to .zsh_history immediately
 setopt INC_APPEND_HISTORY
 
-# Remove duplicate commands from .zsh_history.
+# Remove duplicate commands from .zsh_history
 setopt HIST_IGNORE_ALL_DUPS
 
-# Increase maximum size of .zsh_history.
+# Increase maximum size of .zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-# Use nvim when I accidentally type vim.
-alias vim=nvim
-
-# Configure fzf to, by default, only look at the files that rg indexes.
+# Configure fzf to, by default, only look at the files that rg indexes
 export FZF_DEFAULT_COMMAND='rg --files'
 
-# Configure gpg.
+# Configure gpg
 export GPG_TTY=$(tty)
