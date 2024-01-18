@@ -56,9 +56,60 @@ require("lazy").setup({
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		setup = function()
+		config = function()
 			require("which-key").register({
 				["<leader>r"] = { name = "Refactor", _ = "which_key_ignore" },
+			})
+		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter",
+		version = false,
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"yioneko/nvim-yati",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				auto_install = true,
+				highlight = { enable = true },
+				-- indent = { enable = true },
+				yati = { enable = true },
+				textobjects = {
+					select = {
+						enable = true,
+						keymaps = {
+							["aa"] = "@parameter.outer",
+							["ia"] = "@parameter.inner",
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = "@class.inner",
+						},
+					},
+					move = {
+						enable = true,
+						goto_next_start = {
+							["]m"] = "@function.outer",
+							["]]"] = "@class.outer",
+						},
+						goto_next_end = {
+							["]M"] = "@function.outer",
+							["]["] = "@class.outer",
+						},
+						goto_previous_start = {
+							["[m"] = "@function.outer",
+							["[["] = "@class.outer",
+						},
+						goto_previous_end = {
+							["[M"] = "@function.outer",
+							["[]"] = "@class.outer",
+						},
+					},
+				},
 			})
 		end,
 	},
@@ -142,51 +193,6 @@ require("lazy").setup({
 			{ "<Leader>t", "<Cmd>FzfLua tags<CR>", desc = "Search tags" },
 		},
 		opts = {},
-	},
-
-	{
-		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-		build = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				highlight = { enable = true },
-				indent = { enable = true },
-				textobjects = {
-					select = {
-						enable = true,
-						keymaps = {
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = "@class.inner",
-						},
-					},
-					move = {
-						enable = true,
-						goto_next_start = {
-							["]m"] = "@function.outer",
-							["]]"] = "@class.outer",
-						},
-						goto_next_end = {
-							["]M"] = "@function.outer",
-							["]["] = "@class.outer",
-						},
-						goto_previous_start = {
-							["[m"] = "@function.outer",
-							["[["] = "@class.outer",
-						},
-						goto_previous_end = {
-							["[M"] = "@function.outer",
-							["[]"] = "@class.outer",
-						},
-					},
-				},
-			})
-		end,
 	},
 
 	{
@@ -355,6 +361,9 @@ vim.opt.timeoutlen = 300
 vim.opt.expandtab = false
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+
+-- Automatically indent new lines.
+vim.opt.smartindent = true
 
 -- Text width settings
 -- vim.opt.wrap = false
