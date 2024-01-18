@@ -386,5 +386,24 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
 	end,
 })
 
--- Keybindings
-vim.keymap.set("n", "<M-g>", "<Cmd>grep '\\<<cword>\\>'<CR>", { silent = true, desc = "Grep word under cursor" })
+-- https://github.com/nvim-telescope/telescope.nvim/issues/1923#issuecomment-1122642431
+function vim.getVisualSelection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg("v")
+	vim.fn.setreg("v", {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ""
+	end
+end
+
+-- Keybindings for calling :grep with what's under the cursor
+vim.keymap.set("n", "<M-g>", function()
+	vim.cmd("grep '\\<<cword>\\>'")
+end, { silent = true, desc = "Grep word under cursor" })
+vim.keymap.set("v", "<M-g>", function()
+	vim.cmd("grep '" .. vim.getVisualSelection() .. "'")
+end, { silent = true, desc = "Grep selection" })
