@@ -46,7 +46,7 @@ require("lazy").setup({
 			require("mini.surround").setup()
 			require("mini.tabline").setup()
 
-			vim.keymap.set("n", "<Leader>n", function()
+			vim.keymap.set("n", "<Leader>e", function()
 				local files = require("mini.files")
 				if not files.close() then
 					files.open(vim.api.nvim_buf_get_name(0))
@@ -73,6 +73,7 @@ require("lazy").setup({
 			{ "<Leader>f", "<Cmd>FzfLua files<CR>" },
 			{ "<Leader>g", "<Cmd>FzfLua grep_project<CR>" },
 			{ "<Leader>h", "<Cmd>FzfLua oldfiles<CR>" },
+			{ "<Leader>s", "<Cmd>FzfLua lsp_document_symbols<CR>" },
 			{ "<Leader>t", "<Cmd>FzfLua tags<CR>" },
 		},
 		config = function()
