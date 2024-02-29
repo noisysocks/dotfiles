@@ -144,16 +144,32 @@ require("lazy").setup({
 			"typescript",
 			"javascriptreact",
 			"typescriptreact",
+			"php",
 		},
 		config = function()
 			local lint = require("lint")
+
+			-- Custom linter that uses local phpcs if available.
+			lint.linters.vendor_phpcs = function()
+				local cmd
+				if vim.fn.executable("vendor/bin/phpcs") then
+					cmd = "vendor/bin/phpcs"
+				else
+					cmd = "phpcs"
+				end
+				return vim.tbl_extend("force", {}, lint.linters.phpcs, {
+					cmd = cmd,
+				})
+			end
+
 			lint.linters_by_ft = {
 				javascript = { "eslint_d" },
 				typescript = { "eslint_d" },
 				javascriptreact = { "eslint_d" },
 				typescriptreact = { "eslint_d" },
-				-- TODO: PHP
+				php = { "vendor_phpcs" },
 			}
+
 			vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost" }, {
 				callback = function()
 					lint.try_lint()
@@ -170,15 +186,42 @@ require("lazy").setup({
 			"typescript",
 			"javascriptreact",
 			"typescriptreact",
+			"php",
 		},
 		config = function()
+			-- Custom formatter that uses local phpcbf if available.
+			function vendor_phpcbf()
+				local exe
+				if vim.fn.executable("vendor/bin/phpcbf") then
+					exe = "vendor/bin/phpcbf"
+				else
+					exe = "phpcbf"
+				end
+				return vim.tbl_extend("force", {}, require("formatter.filetypes.php").phpcbf(), {
+					exe = exe,
+				})
+			end
+
 			require("formatter").setup({
 				filetype = {
 					lua = { require("formatter.filetypes.lua").stylua },
-					javascript = { require("formatter.filetypes.javascript").eslint_d },
-					typescript = { require("formatter.filetypes.typescript").eslint_d },
-					javascriptreact = { require("formatter.filetypes.javascriptreact").eslint_d },
-					typescriptreact = { require("formatter.filetypes.typescriptreact").eslint_d },
+					javascript = {
+						require("formatter.filetypes.javascript").eslint_d,
+						require("formatter.filetypes.javascript").prettierd,
+					},
+					typescript = {
+						require("formatter.filetypes.typescript").eslint_d,
+						require("formatter.filetypes.typescript").prettierd,
+					},
+					javascriptreact = {
+						require("formatter.filetypes.javascriptreact").eslint_d,
+						require("formatter.filetypes.javascriptreact").prettierd,
+					},
+					typescriptreact = {
+						require("formatter.filetypes.typescriptreact").eslint_d,
+						require("formatter.filetypes.typescriptreact").prettierd,
+					},
+					php = { vendor_phpcbf },
 				},
 			})
 			vim.api.nvim_create_autocmd("BufWritePost", {
