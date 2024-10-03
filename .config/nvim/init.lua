@@ -16,10 +16,13 @@ vim.g.mapleader = [[\]]
 
 require("lazy").setup({
 	{
-		"navarasu/onedark.nvim",
+		"Shatur/neovim-ayu",
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("onedark")
+			require("ayu").setup({
+				mirage = true,
+			})
+			require("ayu").colorscheme()
 		end,
 	},
 
@@ -231,7 +234,7 @@ require("lazy").setup({
 	},
 }, {
 	install = {
-		colorscheme = { "onedark" },
+		colorscheme = { "ayu" },
 	},
 })
 
