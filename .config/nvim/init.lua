@@ -214,6 +214,7 @@ require("lazy").setup({
 			require("formatter").setup({
 				filetype = {
 					lua = { require("formatter.filetypes.lua").stylua },
+					php = { vendor_phpcbf },
 					javascript = {
 						require("formatter.filetypes.javascript").eslint_d,
 						require("formatter.filetypes.javascript").prettierd,
@@ -230,9 +231,21 @@ require("lazy").setup({
 						require("formatter.filetypes.typescriptreact").eslint_d,
 						require("formatter.filetypes.typescriptreact").prettierd,
 					},
-					php = { vendor_phpcbf },
+					html = {
+						require("formatter.filetypes.html").prettierd,
+					},
+					css = {
+						require("formatter.filetypes.css").prettierd,
+					},
+					markdown = {
+						require("formatter.filetypes.markdown").prettierd,
+					},
+					yaml = {
+						require("formatter.filetypes.yaml").prettierd,
+					},
 				},
 			})
+
 			vim.api.nvim_create_autocmd("BufWritePost", {
 				command = "FormatWrite",
 			})
