@@ -26,7 +26,6 @@ require("lazy").setup({
 		end,
 	},
 
-	"github/copilot.vim",
 	"teoljungberg/vim-grep-motion",
 
 	{
