@@ -84,6 +84,13 @@ require("lazy").setup({
 	},
 
 	{
+		"nmac427/guess-indent.nvim",
+		config = function()
+			require("guess-indent").setup()
+		end,
+	},
+
+	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
@@ -237,8 +244,8 @@ require("lazy").setup({
 	},
 })
 
--- Prefer tabs with a width of 4 spaces
-vim.opt.expandtab = false
+-- Prefer spaces with a width of 4 spaces
+vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
