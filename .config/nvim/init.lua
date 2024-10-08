@@ -159,11 +159,11 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-lint",
 		ft = {
+			"php",
 			"javascript",
 			"typescript",
 			"javascriptreact",
 			"typescriptreact",
-			"php",
 		},
 		config = function()
 			local lint = require("lint")
@@ -182,11 +182,11 @@ require("lazy").setup({
 			end
 
 			lint.linters_by_ft = {
+				php = { "vendor_phpcs" },
 				javascript = { "eslint_d" },
 				typescript = { "eslint_d" },
 				javascriptreact = { "eslint_d" },
 				typescriptreact = { "eslint_d" },
-				php = { "vendor_phpcs" },
 			}
 
 			vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost" }, {
@@ -201,11 +201,15 @@ require("lazy").setup({
 		"mhartington/formatter.nvim",
 		ft = {
 			"lua",
+			"php",
 			"javascript",
 			"typescript",
 			"javascriptreact",
 			"typescriptreact",
-			"php",
+			"html",
+			"css",
+			"markdown",
+			"yaml",
 		},
 		config = function()
 			-- Custom formatter that uses local phpcbf if available.
