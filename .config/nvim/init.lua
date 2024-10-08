@@ -213,7 +213,7 @@ require("lazy").setup({
 		},
 		config = function()
 			-- Custom formatter that uses local phpcbf if available.
-			function vendor_phpcbf()
+			local function vendor_phpcbf()
 				local exe
 				if vim.fn.executable("vendor/bin/phpcbf") then
 					exe = "vendor/bin/phpcbf"
