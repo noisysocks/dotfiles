@@ -19,8 +19,18 @@ require("lazy").setup({
 		"Shatur/neovim-ayu",
 		priority = 1000,
 		config = function()
+			local function get_macos_appearance()
+				local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
+				if handle then
+					local result = handle:read("*a")
+					handle:close()
+					return result:match("Dark") and "dark" or "light"
+				end
+				return "light"
+			end
+
 			require("ayu").setup({
-				mirage = true,
+				mirage = get_macos_appearance() == "light",
 			})
 			require("ayu").colorscheme()
 		end,
