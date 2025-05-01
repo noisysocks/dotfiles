@@ -55,6 +55,13 @@ if [ -x /opt/homebrew/bin ]; then
 		echo '.zshrc: Could not load nvm completions.'
 	fi
 
+	# Load rbenv
+	if which rbenv > /dev/null 2>&1; then
+		eval "$(rbenv init - --no-rehash zsh)"
+	else
+		echo '.zshrc: Could not load rbenv.'
+	fi
+
 else
 
 	echo '.zshrc: Could not execute brew.'
