@@ -1,0 +1,12 @@
+{
+  "apiKeyHelper": "~/.claude/apikey.sh",
+  "env": {
+    "disableTelemetry": "true",
+    "disableErrorReporting": "true",
+    "disableBugCommand": "true"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
+}
