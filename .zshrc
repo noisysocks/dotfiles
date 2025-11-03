@@ -1,10 +1,18 @@
 # Add ~/bin to my path
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-if [ -x /opt/homebrew/bin ]; then
+# Support Homebrew on macOS and Linux
+BREW_PATH=""
+if [ -x /opt/homebrew/bin/brew ]; then
+	BREW_PATH="/opt/homebrew/bin/brew"
+elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+	BREW_PATH="/home/linuxbrew/.linuxbrew/bin/brew"
+fi
+
+if [ -x "$BREW_PATH" ]; then
 
 	# Load Homebrew
-	eval $(/opt/homebrew/bin/brew shellenv)
+	eval "$($BREW_PATH shellenv)"
 
 	# Enable completions
 	FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
@@ -66,7 +74,7 @@ fi
 if which pyenv > /dev/null 2>&1; then
 	eval "$(pyenv init -)"
 else
-	echo '.zshrc: Could not load rbenv.'
+	echo '.zshrc: Could not load pyenv.'
 fi
 
 # Load rbenv
