@@ -16,3 +16,5 @@
 	defaultBranch = main
 [includeIf "gitdir:~/code/duckduckgo/"]
 	path = .ddg-gitconfig
+[includeIf "gitdir:/mnt/c/Users/robert/code/duckduckgo/"]
+	path = .ddg-gitconfig
