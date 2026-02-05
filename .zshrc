@@ -100,6 +100,3 @@ export SAVEHIST=1000000
 
 # Configure fzf to, by default, only look at the files that rg indexes
 export FZF_DEFAULT_COMMAND='rg --files'
-
-# Configure gpg
-export GPG_TTY=$(tty)

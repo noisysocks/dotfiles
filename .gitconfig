@@ -1,7 +1,7 @@
 [user]
 	name = Robert Anderson
 	email = robert@noisysocks.com
-	signingkey = E7E6BEC3036F5AC8
+	signingkey = ~/.ssh/id_ed25519.pub
 [push]
 	default = current
 [alias]
@@ -18,3 +18,5 @@
 	path = .ddg-gitconfig
 [includeIf "gitdir:/mnt/c/Users/robert/code/duckduckgo/"]
 	path = .ddg-gitconfig
+[gpg]
+	format = ssh
