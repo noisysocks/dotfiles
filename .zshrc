@@ -21,60 +21,44 @@ if [ -x "$BREW_PATH" ]; then
 
 	# Set prompt to show current directory and git branch
 	# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-	if [ -r $(brew --prefix)/etc/bash_completion.d/git-prompt.sh ]; then
-		source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+	if [ -r "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh" ]; then
+		source "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh"
 		GIT_PS1_SHOWDIRTYSTATE=1
 		precmd() {
 			__git_ps1 "%F{244}%1~" " %#%f "
 		}
 	else
-		echo '.zshrc: Could not load git prompt.'
+		echo ".zshrc: Could not load git prompt."
 	fi
 
 	# Load z
-	if [ -r $(brew --prefix)/etc/profile.d/z.sh ]; then
-		source $(brew --prefix)/etc/profile.d/z.sh
+	if [ -r "$(brew --prefix)/etc/profile.d/z.sh" ]; then
+		source "$(brew --prefix)/etc/profile.d/z.sh"
 	else
-		echo '.zshrc: Could not load z.'
+		echo ".zshrc: Could not load z."
 	fi
-
-	# Enable fzf tab completion and key bindings
-	if [ -f $(brew --prefix)/opt/fzf/shell/completion.zsh ] && [[ $- == *i* ]]; then
-		source $(brew --prefix)/opt/fzf/shell/completion.zsh
-	else
-		echo '.zshrc: Could not load fzf completions.'
-	fi
-	if [ -f $(brew --prefix)/opt/fzf/shell/key-bindings.zsh ]; then
-		source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
-	else
-		echo '.zshrc: Could not load fzf key bindings.'
-	fi
-
-	# Load nvm
-	if [ -r $(brew --prefix)/opt/nvm/nvm.sh ]; then
-		export NVM_DIR=~/.nvm
-		source $(brew --prefix)/opt/nvm/nvm.sh
-	else
-		echo '.zshrc: Could not load nvm.'
-	fi
-	if [ -r $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm ]; then
-		source $(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm
-	else
-		echo '.zshrc: Could not load nvm completions.'
-	fi
-
 
 else
 
-	echo '.zshrc: Could not execute brew.'
+	echo ".zshrc: Could not execute brew."
 
+fi
+
+# Load fzf
+if which fzf > /dev/null 2>&1; then
+	eval "$(fzf --zsh)"
+fi
+
+# Load fnm
+if which fnm > /dev/null 2>&1; then
+	eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy=recursive)"
 fi
 
 # Load pyenv
 if which pyenv > /dev/null 2>&1; then
 	eval "$(pyenv init -)"
 else
-	echo '.zshrc: Could not load pyenv.'
+	echo ".zshrc: Could not load pyenv."
 fi
 
 # Load rbenv
@@ -99,4 +83,4 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 # Configure fzf to, by default, only look at the files that rg indexes
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND="rg --files"
