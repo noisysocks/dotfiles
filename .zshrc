@@ -65,7 +65,7 @@ fi
 if which rbenv > /dev/null 2>&1; then
 	eval "$(rbenv init - --no-rehash zsh)"
 else
-	echo '.zshrc: Could not load rbenv.'
+	echo ".zshrc: Could not load rbenv."
 fi
 
 # Use nvim as my editor
