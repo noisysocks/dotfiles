@@ -1,0 +1,2 @@
+- Git branches should start with `randerson/` when project convention (other branches) requires a name prefix
+- Worktrees go in `../worktrees/<name>` with a descriptive kebab-case name, e.g. `../worktrees/fix-auth-token-refresh`

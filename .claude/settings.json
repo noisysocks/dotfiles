@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "model": "opus[1m]",
   "effortLevel": "high",
   "voiceEnabled": true,
@@ -13,6 +14,53 @@
           }
         ]
       }
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "excludedCommands": [
+      "git",
+      "gh",
+      "npm",
+      "npx",
+      "pnpm",
+      "bun",
+      "xcrun",
+      "xcodebuild",
+      "fastlane",
+      "adb",
+      "gradle",
+      "tsc"
+    ],
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "*.github.com",
+        "*.githubusercontent.com",
+        "registry.npmjs.org",
+        "*.npmjs.org",
+        "api.anthropic.com",
+        "plugins.gradle.org"
+      ],
+      "allowLocalBinding": true,
+      "allowAllUnixSockets": true
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(yarn *)",
+      "Bash(pnpm *)",
+      "Bash(bun *)",
+      "Bash(xcrun *)",
+      "Bash(xcodebuild *)",
+      "Bash(fastlane *)",
+      "Bash(adb *)",
+      "Bash(gradle *)",
+      "Bash(tsc *)"
     ]
   }
 }
