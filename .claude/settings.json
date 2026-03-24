@@ -1,0 +1,18 @@
+{
+  "model": "opus[1m]",
+  "effortLevel": "high",
+  "voiceEnabled": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/prettier-if-available.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
