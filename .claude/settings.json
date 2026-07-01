@@ -1,12 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "opus[1m]",
-  "effortLevel": "high",
-  "voiceEnabled": true,
-  "skipAutoPermissionPrompt": true,
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
+  "effortLevel": "high",
   "hooks": {
     "PostToolUse": [
       {
@@ -14,7 +12,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/prettier-if-available.sh"
+            "command": "~/.claude/hooks/format-if-available.sh"
           }
         ]
       }
@@ -22,6 +20,12 @@
   },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
-  }
+    "playwright@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "asana-company-context@duckduckgo-plugins": true,
+    "asana-formatting@duckduckgo-plugins": true,
+    "asana-project-artifacts@duckduckgo-plugins": true,
+    "cursor-cloud-agents@duckduckgo-plugins": true
+  },
+  "tui": "fullscreen"
 }
