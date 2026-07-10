@@ -1,1 +1,3 @@
 - Git branches should start with `randerson/` when project convention (other branches) requires a name prefix
+- PR and commit titles: plain descriptive titles, no conventional-commits / graphite prefixes (`fix:`, `feat:`, `test:`, etc.)
+- Comments explain _why_, not _what_; add them only when the code can't speak for itself – basically never
