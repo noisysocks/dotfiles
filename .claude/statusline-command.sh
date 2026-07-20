@@ -1,6 +1,6 @@
 #!/bin/bash
 # Claude Code status line
-# Shows: project dir | ⑃ worktree | ⑂ git branch | model (effort) | tokens used | session cost
+# Shows: project dir (git branch) | model (effort) | tokens used | session cost
 # Managed by the statusline-setup agent.
 
 input=$(cat)
@@ -14,7 +14,6 @@ model=$(printf '%s' "$input" | jq -r '.model.id // "unknown"')
 effort=$(printf '%s' "$input" | jq -r '.effort.level // empty')
 project_dir=$(printf '%s' "$input" | jq -r '.workspace.project_dir // empty')
 cwd=$(printf '%s' "$input" | jq -r '.workspace.current_dir // empty')
-worktree=$(printf '%s' "$input" | jq -r '.worktree.name // .workspace.git_worktree // empty')
 
 project_name=""
 [ -n "$project_dir" ] && project_name=$(basename "$project_dir")
@@ -36,10 +35,11 @@ else
   tokens_fmt="$total_tokens"
 fi
 
+dir_segment="$project_name"
+[ -n "$branch" ] && dir_segment="$dir_segment ($branch)"
+
 segments=()
-[ -n "$project_name" ] && segments+=("$project_name")
-[ -n "$worktree" ] && segments+=("⑃ $worktree")
-[ -n "$branch" ] && segments+=("⑂ $branch")
+[ -n "$dir_segment" ] && segments+=("$dir_segment")
 
 model_segment="$model"
 [ -n "$effort" ] && model_segment="$model_segment ($effort)"
