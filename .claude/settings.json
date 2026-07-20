@@ -19,13 +19,14 @@
     ]
   },
   "enabledPlugins": {
-    "context7@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "asana-company-context@duckduckgo-plugins": true,
     "asana-formatting@duckduckgo-plugins": true,
-    "asana-project-artifacts@duckduckgo-plugins": true,
     "cursor-cloud-agents@duckduckgo-plugins": true
   },
-  "tui": "fullscreen"
+  "tui": "fullscreen",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  }
 }
