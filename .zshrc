@@ -84,3 +84,8 @@ export SAVEHIST=1000000
 
 # Configure fzf to, by default, only look at the files that rg indexes
 export FZF_DEFAULT_COMMAND="rg --files"
+
+# Somewhere to put secrets that I don't want in GitHub
+if [ -f "$HOME/.private_zshrc" ]; then
+	source "$HOME/.private_zshrc"
+fi
