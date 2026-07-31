@@ -1,3 +1,5 @@
-- Git branches should start with `randerson/` when project convention (other branches) requires a name prefix
-- PR and commit titles: plain descriptive titles, no conventional-commits / graphite prefixes (`fix:`, `feat:`, `test:`, etc.)
-- Comments explain _why_, not _what_; add them only when the code can't speak for itself – basically never
+- Wait until I've reviewed the diff before committing.
+- Prefix branch names with `randerson/`, e.g. `randerson/update-pir-dashboard-copy`.
+- Use plain descriptive titles for PRs and commits, e.g. "Update PIR dashboard copy".
+- Ask me to provide a rough PR description before creating a PR. Tidy up what I write and incorporate it into the repo's pull request template.
+- AVOID POINTLESS CODE COMMENTS. Never write comments that restate what the code already says. Comments should make sense to a reader that is not familiar with the task we're currently working on. Comments should be very rare. For example, above a workaround or code with subtly odd behaviour.
