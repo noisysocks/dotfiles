@@ -1,0 +1,26 @@
+onboarding = false
+
+[theme]
+name = "one-dark"
+
+# Ayu Mirage: https://github.com/ayu-theme/ayu-colors/blob/b0fd979a1ddf050101b43311fa598a1a9c5f1bbc/themes/mirage.yaml
+# Herdr has no alpha, so "over ui.bg" colors are pre-blended.
+[theme.custom]
+panel_bg = "#1f2430"       # ui.bg
+active_row_bg = "#242936"  # surface.lift
+selection_bg = "#274364"   # editor.selection.active over ui.bg
+surface0 = "#282e3b"       # ui.panel.bg
+surface1 = "#323845"       # editor.indentGuide.normal over ui.bg
+surface_dim = "#171b24"    # ui.line
+overlay0 = "#707a8c"       # ui.fg
+overlay1 = "#6e7c8f"       # syntax.comment
+text = "#cccac2"           # editor.fg
+subtext0 = "#afb7c1"       # palette.gray.l2
+accent = "#ffcc66"         # common.accent.tint
+mauve = "#dfbfff"          # syntax.constant
+green = "#d5ff80"          # syntax.string
+yellow = "#ffcd66"         # syntax.func
+red = "#f28779"            # syntax.markup
+blue = "#73d0ff"           # syntax.entity
+teal = "#95e6cb"           # syntax.regexp
+peach = "#ffa659"          # syntax.keyword
