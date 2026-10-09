@@ -18,3 +18,5 @@
 	st = status
 [includeIf "gitdir:**/duckduckgo/"]
 	path = .ddg-gitconfig
+[url "git@github.com:"]
+	insteadOf = https://github.com/
