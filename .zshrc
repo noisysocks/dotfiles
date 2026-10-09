@@ -31,17 +31,15 @@ if [ -x "$BREW_PATH" ]; then
 		echo ".zshrc: Could not load git prompt."
 	fi
 
-	# Load z
-	if [ -r "$(brew --prefix)/etc/profile.d/z.sh" ]; then
-		source "$(brew --prefix)/etc/profile.d/z.sh"
-	else
-		echo ".zshrc: Could not load z."
-	fi
-
 else
 
 	echo ".zshrc: Could not execute brew."
 
+fi
+
+# Load zoxide
+if which zoxide > /dev/null 2>&1; then
+	eval "$(zoxide init zsh)"
 fi
 
 # Load fzf
