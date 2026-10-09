@@ -1,5 +1,9 @@
-- Wait until I've reviewed the diff before committing.
-- Prefix branch names with `randerson/`, e.g. `randerson/update-pir-dashboard-copy`.
-- Use plain descriptive titles for PRs and commits, e.g. "Update PIR dashboard copy".
-- Ask me to provide a rough PR description before creating a PR. Tidy up what I write and incorporate it into the repo's pull request template.
-- AVOID POINTLESS CODE COMMENTS. Never write comments that restate what the code already says. Comments should make sense to a reader that is not familiar with the task we're currently working on. Comments should be very rare. For example, above a workaround or code with subtly odd behaviour.
+Prefix branch names with `randerson/` (e.g. `randerson/update-pir-dashboard-copy`) unless the repo's conventions call for something else.
+
+Use plain descriptive titles for PRs and commits (e.g. "Update PIR dashboard copy") unless the repo's conventions call for something else.
+
+**Avoid pointless code comments.** Comments should:
+- Be very rare.
+- Never restate what the code already says.
+- Make sense to a reader who was not a part of our conversation.
+- Be mostly used for documenting odd behaviour or workarounds.
