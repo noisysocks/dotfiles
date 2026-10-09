@@ -3,8 +3,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
-  "effortLevel": "high",
+  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -18,15 +17,40 @@
       }
     ]
   },
-  "enabledPlugins": {
-    "playwright@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "asana-formatting@duckduckgo-plugins": true,
-    "cursor-cloud-agents@duckduckgo-plugins": true
-  },
-  "tui": "fullscreen",
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
-  }
+  },
+  "enabledPlugins": {
+    "playwright@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "asana-formatting@duckduckgo-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "randerson-skills-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "duckduckgo/claude-skills-randerson"
+      }
+    }
+  },
+  "outputStyle": "Concise",
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "high"
+    },
+    "claude-sonnet-5": {
+      "effortLevel": "low"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "medium"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "tui": "fullscreen",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
 }
