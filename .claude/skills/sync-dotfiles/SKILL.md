@@ -15,8 +15,9 @@ The shared repo is `git@github.com:noisysocks/dotfiles.git` (`main`). It's check
 
 ## Steps
 
-1. On every machine, check for uncommitted changes and how far it is from `origin/main` (`yadm status -sb`, `yadm fetch`; on randerson.dev, `git -C ~/.dotfiles status` and fetch). Show the user a short summary.
-2. Look at each diff. Commit only changes that belong on every machine. If something looks machine-specific (paths, hostnames, secrets, local tool setup), ask the user instead of committing it.
-3. Commit on the machine that has the change, one commit per logical change (when one file holds unrelated changes, stage just the relevant hunks by writing a patch and running `yadm apply --cached <patch>`), each with a short plain title and no prefix (e.g. `Add Ayu Mirage theme to herdr`), then `pull --rebase` and push. If several machines have changes, do them one at a time so each rebases on the last. Stop and ask on conflicts.
-4. Pull on the other machines (`yadm pull --rebase`). On randerson.dev, `git -C ~/.dotfiles checkout main && git -C ~/.dotfiles pull --rebase` (the submodule is often on a detached HEAD), then commit the submodule bump in the DDG yadm repo and push it. A file newly added to the shared repo also needs a symlink in `~` on randerson.dev pointing into `~/.dotfiles`, like the existing ones.
-5. Report what was committed, where, and that all three are on the same commit.
+1. On every machine, check for uncommitted changes and distance from `origin/main`, and summarise for the user.
+2. Commit only changes that belong on every machine. Ask about anything machine-specific (paths, hostnames, secrets, local tool setup).
+3. Commit one logical change per commit on the machine that has it (stage hunks with `yadm apply --cached <patch>`), then `pull --rebase` and push. Go one machine at a time. Stop and ask on conflicts.
+4. Pull on the other machines.
+5. On randerson.dev, `git -C ~/.dotfiles checkout main` first (the submodule is often on a detached HEAD), then commit the submodule bump in the DDG yadm repo and push it. A file newly added to the shared repo also needs a symlink in `~` pointing into `~/.dotfiles`, like the existing ones.
+6. Confirm all three machines are on the same commit.
